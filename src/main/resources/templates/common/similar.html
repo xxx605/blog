@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav class="blog-nav layui-header" style="background: rgb(62,49,93);" th:fragment="nav">
+
+
+    <a class="blog-logo" href="/">My Blog</a>
+    <!-- 导航菜单 -->
+    <ul class="layui-nav" id="navi" lay-filter="nav">
+
+        <li class="layui-nav-item">
+            <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;主页</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章</a>
+        </li>
+
+
+
+
+        <li class="layui-nav-item">
+            <a href="report"><i class="fa fa-tags fa-fw"></i>&nbsp;微语</a>
+        </li>
+
+
+
+        <li class="layui-nav-item">
+            <a href=""><i class="fa fa-photo fa-fw"></i>&nbsp;相册</a>
+        </li>
+
+
+
+        <li class="layui-nav-item">
+            <a href=""><i class="fa fa-info fa-fw"></i>&nbsp;消息<span class="layui-badge">0</span></a>
+        </li>
+
+
+
+        <li class="layui-nav-item">
+
+            <a href=""><i class="fa fa-user fa-fw"></i>&nbsp;个人中心<span class="layui-badge-dot"></span></a>
+        </li>
+
+        <li class="layui-nav-item" lay-unselect="">
+
+            <a href="" th:if="${userinfo}!=null" >
+                <img src="img/touxiang.jpg" class="layui-nav-img"><span id="author" th:text="${userinfo.nickname}"></span></a>
+
+            <a href="login" th:if="${userinfo}==null" ><img src="img/touxiang.jpg" class="layui-nav-img">游客</a>
+
+
+            <dl class="layui-nav-child" th:if="${userinfo}!=null">
+                <dd><a href="javascript:;">修改信息</a></dd>
+                <dd><a href="javascript:;">退出</a></dd>
+            </dl>
+        </li>
+
+    </ul>
+    <!-- 手机和平板的导航开关 -->
+    <a class="blog-navicon" href="javascript:;">
+        <i class="fa fa-navicon"></i>
+    </a>
+    </div>
+</nav>
+
+
+
+
+<!--侧边导航-->
+<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav" th:fragment="sidenav">
+    <li class="layui-nav-item">
+        <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;主页</a>
+    </li>
+
+    <li class="layui-nav-item">
+        <a href="article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章</a>
+    </li>
+
+
+
+
+    <li class="layui-nav-item">
+        <a href="report"><i class="fa fa-tags fa-fw"></i>&nbsp;微语</a>
+    </li>
+
+
+
+    <li class="layui-nav-item">
+        <a href=""><i class="fa fa-photo fa-fw"></i>&nbsp;相册</a>
+    </li>
+
+
+
+    <li class="layui-nav-item">
+        <a href=""><i class="fa fa-info fa-fw"></i>&nbsp;消息<span class="layui-badge">0</span></a>
+    </li>
+
+
+
+    <li class="layui-nav-item">
+        <a href=""><i class="fa fa-user fa-fw"></i>&nbsp;个人中心<span class="layui-badge-dot"></span></a>
+    </li>
+
+    <li class="layui-nav-item" lay-unselect="">
+        <a href="" th:if="${userinfo}!=null" >
+            <img src="img/touxiang.jpg" class="layui-nav-img"><span th:text="${userinfo.nickname}"></span></a>
+
+        <a href="login" th:if="${userinfo}==null"><img  src="img/touxiang.jpg" class="layui-nav-img">游客</a>
+        <dl class="layui-nav-child" th:if="${userinfo}!=null">
+            <dd><a href="javascript:;">修改信息</a></dd>
+            <dd><a href="javascript:;">退出</a></dd>
+        </dl>
+    </li>
+
+</ul>
+
+
+<!--分享窗体-->
+<div class="blog-share layui-hide" th:fragment="sharingForm">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--友情连接-->
+<div class="blog-module shadow animated fadeInRight" th:fragment="friendlyConnection">
+        <div class="blog-module-title">友情链接</div>
+        <ul class="blogroll">
+
+            <li>
+                <a target="_blank" href="http://www.layui.com/" title="Layui">
+                    Layui
+                </a>
+            </li>
+
+            <li>
+                <a target="_blank" href="https://imququ.com/" title="Jerry Qu">
+                    Jerry Qu
+                </a>
+            </li>
+
+            <li>
+                <a target="_blank" href="https://www.xiaohuochai.cc/" title="小火柴">
+                    小火柴
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+<!--热文排行-->
+<div class="blog-module shadow animated fadeInRight" id="hotarticles" th:fragment="hotTextRanking">
+    <div class="blog-module-title">热文排行</div>
+    <ul class="fa-ul blog-module-ul">
+        <!--<li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">Web安全之跨站请求伪造CSRF</a></li>-->
+    </ul>
+</div>
+
+<!--热评用户-->
+<div class="blog-module shadow animated fadeInRight" th:fragment="hotReviewUser">
+    <div id="cyHotusers" role="cylabs" data-use="hotusers">
+        <div class="hotusers-header"><span>热评用户</span></div>
+        <ul class="hotusers-list">
+            <!--<li class="hotusers-list-item">
+                <div class="hotusers-top hotusers-num">1</div>
+                <div class="hotusers-avator"><img src="http://photo.pic.sohu.com/images/oldblog/person/11111.gif" width="45" height="45"></div>
+                <div>
+                    <div class="hotusers-nick">搜狐网友54723410</div>
+                    <span uid="9877809" node-type="privilege-intro" level="2" score="5" class="hotusers-level" title="等级2" style=" background-image: url(https://changyan.itc.cn/v2/asset/scs/imgs/p-lv02.png);">
+                    <i style=" background-image:url(https://changyan.itc.cn/v2/asset/scs/imgs/p-lv01-04.png);">冒泡</i></span>
+                    <span class="hotusers-totalcmt">本月评论数：8 </span>
+                </div>
+                <span class="hotusers-icons"></span>
+            </li>-->
+        </ul>
+    </div>
+</div>
+
+<!--热门评论-->
+<div class="blog-module shadow animated fadeInRight" th:fragment="topComments">
+    <div id="cyReping" role="cylabs" data-use="reping">
+        <div id="cyWrapper" class="cy-wrapper">
+            <div class="hotusers-header"><span>热门评论</span></div>
+            <ul class="reping-list">
+                <!--<li class="list-item cl">
+                    <div class="reping-avatar">
+                        <img width="50px" height="50px" src="//sucimg.itc.cn/avatarimg/774957804_1492673251455_c55" title="基于laypage的layui扩展模块（pagesize.js）！">
+                    </div>
+                    <div class="contavatar">
+                        <span class="reping-nickname">謓d累了</span>
+                        <span class="reping-content"><img src="//changyan.itc.cn/v2/asset/scs/imgs/new_face/new_face_10.gif" alt="鼓掌" title="鼓掌" ubb="/鼓掌"><img src="//changyan.itc.cn/v2/asset/scs/imgs/new_face/new_face_10.gif" alt="鼓掌" title="鼓掌" ubb="/鼓掌"><img src="//changyan.itc.cn/v2/asset/scs/imgs/new_face/new_face_10.gif" alt="鼓掌" title="鼓掌" ubb="/鼓掌"></span>
+                        <span class="reping-title"><a href="http://blog.jczxw.cn/detail/58fd51b655177b13c02db988" target="_blank" title="基于laypage的layui扩展模块（pagesize.js）！">评:基于laypage的la</a></span>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<
+
+<!-- 底部 -->
+<footer class="blog-footer" th:fragment="foot">
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="http://blog.jczxw.cn">小李Blog</a><span>By QQ764692390</span></p>
+    <p><a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备14037484号-1</a></p>
+    <p class="site-union">
+        <a href="https://www.upyun.com?from=jczxw" target="_blank" rel="nofollow" upyun=""><img style="width:80px;" src=""></a>
+        <span style="position: relative;top: 3px;margin-left: 6px;">提供 CDN 赞助</span>
+    </p>
+</footer>
+</body>
+
+</html>

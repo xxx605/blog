@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+    <select id="selectIndexArtcile" resultType="indexArticle">
+        select * from u_article order by aid desc limit 0,8;
+    </select>
+
+    <insert id="insertArticle" parameterType="indexArticle">
+        insert into u_article(<include refid="insertArticlesqlkey"></include>) values(<include refid="insertArticlesqlvalues"></include>)
+    </insert>
+    <sql id="insertArticlesqlkey">
+        a_context,
+        a_title,
+        a_path,
+        a_time,
+        a_author,
+        a_classify,
+        a_text
+    </sql>
+    <sql id="insertArticlesqlvalues">
+        #{indexArticle.a_context},
+        #{indexArticle.a_title},
+        #{indexArticle.a_path},
+        #{indexArticle.a_time},
+        #{indexArticle.a_author},
+        #{indexArticle.a_classify},
+        #{indexArticle.a_text}
+    </sql>
+
+    <select id="selectArticleByAid" resultType="indexArticle">
+        select * from u_article where aid=#{aid}
+    </select>
+</mapper>

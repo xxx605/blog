@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    
+    <title>blog login</title>
+    
+	<meta charset="utf-8" />
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js" ></script>
+	<link rel="stylesheet" href="/css/login/login.css" />
+
+  </head>
+  
+  <body>
+  	<div class="body_top">
+    <div class="top">
+			<span id="tit"></span>
+			<span class="zhuce">用户登录</span>  		
+		</div>
+		</div>
+       <div class="body">
+       		<div class="login" style="border-radius:15px ;">
+       		<span id="span_a" style="color:red;"></span>
+       			<p>用户登录</p>
+       			<span id="form">
+       				<div class="inp" ><img src="../../img/own.png"/><input  class="inpp" id="login" name="name" placeholder="请输入用户名"/></div>
+					<span class="sp1" id="sp1">&nbsp</span>
+       		    	<div class="inp" ><img src="../../img/lock.png"/><input class="inpp" id="password" name="password" type="password" placeholder="请输入密码"/><img class="eye" src="../../img/eyes.png"/></div>
+       		    	<span class="sp1" id="sp2">&nbsp</span>
+       		    	<div class="inp_1"><input id="code" name="code"  class="inpp" placeholder="请输入验证码"/></div><img class="btn_1"  id="img_a" src="check">
+     				<span class="sp2" id="sp3">&nbsp</span>
+       		        <span class="span">您还未接受服务条款</span>
+       		    	<div class="check">
+       		    		<input class="checkbox check_1" type="checkbox" checked="checked"/><b>同意并遵循</b><a href="" >《服务条款》</a>
+       		    		<input class="checkbox check_2" type="checkbox" /><b>记住密码</b>
+       		    	</div>
+       		    	<input type="submit" id="btn" value="登录"/>
+				</span>
+       		    <div class="reg">
+       		    	<span>还没有帐号？</span><a href="">免费注册</a><a class="forget" href=""  >忘记密码？</a>
+       		    </div>
+       		</div>
+       		
+       		  <div class="foot">
+       	<p></p>
+       	<p></p>
+       </div>
+       </div>
+     
+  </body>
+  <script type="text/javascript" src="js/login/prove.js" ></script>
+  <script type="text/javascript">
+
+	$(function () {
+		$("#img_a").click(function () {
+			$(this)[0].src="check?i="+new Date();
+		})
+
+
+
+
+
+	})
+  </script>
+</html>

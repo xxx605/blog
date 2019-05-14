@@ -1,0 +1,15 @@
+2019-05-06 11:20:53.405  INFO 5416 --- [main] com.BlogApplication                      : Starting BlogApplication on RO5OTH65EPLLING with PID 5416 (D:\IDEA\blog\target\classes started by Administrator in D:\IDEA\blog)
+2019-05-06 11:20:53.407  INFO 5416 --- [main] com.BlogApplication                      : No active profile set, falling back to default profiles: default
+2019-05-06 11:20:55.800  WARN 5416 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com]' package. Please check your configuration.
+2019-05-06 11:20:56.220  INFO 5416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-05-06 11:20:56.235  INFO 5416 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-05-06 11:20:56.236  INFO 5416 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-06 11:20:56.299  INFO 5416 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-05-06 11:20:56.299  INFO 5416 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2803 ms
+2019-05-06 11:20:56.448  INFO 5416 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-06 11:20:56.541  INFO 5416 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-05-06 11:20:56.862  INFO 5416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-05-06 11:20:56.864  INFO 5416 --- [main] com.BlogApplication                      : Started BlogApplication in 4.043 seconds (JVM running for 4.74)
+2019-05-06 11:21:15.917  INFO 5416 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-06 11:21:15.917  INFO 5416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-05-06 11:21:15.922  INFO 5416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms

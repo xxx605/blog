@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/current-page.css"/>
+    <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/media.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../css/similar.css"/>
+    <link rel="stylesheet" href="../css/detail.css"/>
+    <link rel="stylesheet" href="../css/pretiffy.css"/>
+</head>
+
+
+<body>
+
+
+<!--上方导航-->
+<div th:replace="common/similar :: nav"></div>
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- canvas -->
+    <canvas id="canvas-banner" style="background: rbg(62,49,93);"></canvas>
+    <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
+    <script type="text/javascript">
+        var canvas = document.getElementById('canvas-banner');
+        canvas.width = window.document.body.clientWidth - 10; //减去滚动条的宽度
+        if (screen.width >= 992) {
+            canvas.height = window.innerHeight - 65;
+        } else {
+            canvas.height = window.innerHeight - 65;
+        }
+        ;
+    </script>
+    <div class="blog-container">
+        <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+            <a href="/" title="网站首页">网站首页</a>
+            <a href="/report" title="微语">微语</a>
+        </blockquote>
+        <div class="blog-main">
+            <div class="blog-main-left">
+                <!-- 文章内容（使用Kingeditor富文本编辑器发表的） -->
+
+
+                <div class="article-detail shadow animated fadeInLeft">
+
+                    <!-- 加载编辑器的容器 -->
+                    <!--                    <script id="container" name="content" type="text/plain" style="height: 500px;width: 100%;"  >-->
+                    <!--                    -->
+                    <!--                         </script>-->
+                    <span style="color: #009688">标题:</span><br/>
+                    <input id="articleTitle" type="text" style="width:100%;height: 30px;margin-top: 5px;margin-bottom: 5px;text-align: center;" placeholder="请输入标题"/>
+                    <span style="color: #009688">分类:</span><br/>
+
+                    <div class="layui-input-inline layui-form" style="z-index: 9999;">
+                        <select  class="classfiy" name="modules" lay-verify="required" lay-search="">
+                            <option value="">选择文章类型</option>
+                            <option value="1">Node</option>
+                            <option value="2">技术交流</option>
+                            <option value="3">PHP</option>
+                            <option value="4">资源共享</option>
+                            <option value="5">闲言碎语</option>
+                            <option value="6">web前端</option>
+                            <option value="7">Javascript</option>
+                            <option value="8">Java</option>
+                            <option value="10">python</option>
+                        </select>
+                    </div><br/>
+                    <span style="margin-top: 10px;color: #009688">内容:</span><br/>
+                    <textarea id="container" name="content" type="text/plain" style="height: 600px;width: 100%;margin-top: 5px;" >请输入内容</textarea>
+                    <p></p>
+                    <br/>
+
+                    <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal"
+                            style="background-color: #009688">文章发表
+                    </button>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="editor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="editor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('container');
+
+                    </script>
+
+
+                </div>
+
+            </div>
+            <div class="blog-main-right">
+                <!--右边悬浮 平板或手机设备显示-->
+                <div class="category-toggle"><i class="fa fa-chevron-left"></i></div>
+                <!--这个div位置不能改，否则需要添加一个div来代替它或者修改样式表-->
+                <!--分类导航-->
+                <div th:replace="common/articleContext :: classify"></div>
+                <!--热门评论-->
+                <div th:replace="common/similar :: topComments"></div>
+                <!--热评用户-->
+                <div th:replace="common/similar :: hotReviewUser"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部 -->
+<footer th:replace="common/similar :: foot"></footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e938abcd1c7d773fc7fafb0de140a9ab";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript" src="js/ueditor.js"></script>
+
+
+<!--侧边导航-->
+<div th:replace="common/similar :: sidenav"></div>
+<!--分享窗体-->
+<div th:replace="common/similar :: sharingForm"></div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+
+</body>
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript" src="../js/goble.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/pages.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+
+
+
+
+
+
+        //表单初始赋值
+        form.val('example', {
+            "username": "贤心" // "name": "value"
+            ,"password": "123456"
+            ,"interest": 1
+            ,"like[write]": true //复选框选中状态
+            ,"close": true //开关状态
+            ,"sex": "女"
+            ,"desc": "我爱 layui"
+        })
+
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".layui-nav-item").eq(2).addClass("layui-this")
+        $(".blog-nav-left .layui-nav-item").eq(2).addClass("layui-this")
+    })
+</script>
+</html>

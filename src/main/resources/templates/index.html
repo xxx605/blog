@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.cookie.js" ></script>
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+		<link rel="stylesheet" type="text/css" href="css/current-page.css"/>
+		<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css"/>
+		<link rel="stylesheet" type="text/css" href="css/media.css"  media="screen"/>
+		<link rel="stylesheet" type="text/css" href="css/similar.css"/>
+	</head>
+<style>
+    a:hover{
+        cursor: pointer;
+    }
+</style>
+	<body>
+		
+
+    <div th:replace="common/similar :: nav"></div>
+
+<div class="blog-body">
+            <!-- canvas -->
+            <canvas id="canvas-banner" style="background: rgb(62,49,93);"></canvas>
+            <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
+            <script type="text/javascript">
+                var canvas = document.getElementById('canvas-banner');
+                canvas.width = window.document.body.clientWidth - 10; //减去滚动条的宽度
+                if (screen.width >= 992) {
+                    canvas.height = window.innerHeight - 65;
+                } else {
+                    canvas.height = window.innerHeight - 65;
+                };
+                var rows = 10;
+                var pagesize = 6;
+            </script>
+            <!-- 这个一般才是真正的主体内容 -->
+            <div class="blog-container">
+
+
+
+                <div class="blog-main">
+                    <!-- 网站公告提示 -->
+                    <div class="home-tips shadow">
+                        <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
+                        <div class="home-tips-container">
+                            <span style="color: #009688;width: 100%;height: 100%;">个人博客，新版网站采用Layui为前端框架，目前正在建设中！
+
+                            </span>
+                            <span style="color: #009688;width: 100%;height: 100%;" >偷偷告诉大家，本博客的后台管理正在制作中！
+
+                            </span>
+                            <span style="color: red;width: 100%;height: 100%;" >如果你觉得网站做得还不错，来点个赞吧！<a  href="" style="color:#01AAED">点我前往</a>
+
+                            </span>
+                        </div>
+
+			<div class="layui-carousel" id="test10">
+ 			 <div carousel-item="">
+    			<div><img src="/img/timg.jpg" width="100%"></div>
+    			<div><img src="/img/timg (2).jpg" width="100%"></div>
+    			<div><img src="/img/timg (3).jpg" width="100%"></div>
+  			  	<div><img src="/img/timg (2).jpg" width="100%"></div>
+    			<div><img src="/img/timg (3).jpg" width="100%"></div>
+    			<div><img src="/img/timg.jpg" width="100%"></div>
+  			</div>
+			</div>
+                    </div>
+  
+                    <!--左边文章列表-->
+                    <div th:replace="common/indexPage :: leftArticle"></div>
+                    <!--右边小栏目-->
+                    <div class="blog-main-right">
+                        <div th:replace="common/indexPage  :: rightUserInfo"></div>
+                        <div></div>
+                        <!--占位-->
+                        <!--热文排行-->
+                        <div th:replace="common/similar :: hotTextRanking"></div>
+                       <!--热门评论-->
+                        <div th:replace="common/similar :: topComments"></div>
+                        <!--热评用户-->
+                        <div th:replace="common/similar :: hotReviewUser"></div>
+                        <!--友情连接-->
+                            <div th:replace="common/similar :: friendlyConnection"></div>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+<!-- 底部 -->
+    <footer th:replace="common/similar :: foot"></footer>
+
+<div th:replace="common/similar :: sidenav"></div>
+
+                <!--分享窗体-->
+<div th:replace="common/similar :: sharingForm"></div>
+                    <!--遮罩-->
+                    <div class="blog-mask animated layui-hide"></div>
+                   
+                   
+
+	</body>
+	<script type="text/javascript" src="layui/layui.js" ></script>
+    <script type="text/javascript" src="js/goble.js" ></script>
+	<script type="text/javascript" src="js/page.js" ></script>
+	<script type="text/javascript" src="js/pages.js" ></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".layui-nav-item").eq(0).addClass("layui-this")
+            $(".blog-nav-left .layui-nav-item").eq(0).addClass("layui-this")
+            var article= $(".article:lt(4)").children(".article-right").children(".article-title")
+            article.children(".icon1").addClass("icon-stick").text("顶")
+            article.children(".icon2").addClass("icon-stick").text("推荐")
+        })
+    </script>
+</html>

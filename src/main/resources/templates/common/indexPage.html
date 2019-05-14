@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    a:hover{
+        cursor: pointer;
+    }
+</style>
+<body>
+<!--左侧文章-->
+<div class="blog-main-left" th:fragment="leftArticle">
+    <div id="HomeConten" >
+
+
+        <div class="article shadow animated fadeInLeft" th:each="indexArticle : ${indexArticles}" th:attr="id=${indexArticle.aid}">
+            <div class="article-left">
+                <img th:attr="src=${indexArticle.a_path},alt=${indexArticle.a_title}" />
+            </div>
+            <div class="article-right" >
+                <div class="article-title">
+
+
+                    <i class="icon1"></i>
+                    <i class="icon2"></i>
+                    <!--<i class="icon-stick">顶</i>
+                  <i class="icon-stick">推荐</i>-->
+
+                    <a class="atitle" th:text="${indexArticle.a_title}">
+                    </a>
+                </div>
+                <div class="article-abstract"  th:text="${#strings.abbreviate(indexArticle.a_text,200)}">
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="article-footer">
+                <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; <span th:text="${indexArticle.a_time}"></span></span>
+                <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp; <span th:text="${indexArticle.a_author}"></span></span>
+                <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="/article" th:text="${indexArticle.a_classify}"></a></span>
+                <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp; <span th:text="${indexArticle.a_watches}"></span></span>
+                <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;<span th:text="${indexArticle.a_commit}"></span></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="HomePage"></div>
+</div>
+
+
+<!--右侧小栏目-->
+<div class="blogerinfo shadow animated fadeInRight" th:fragment="rightUserInfo">
+
+    <!--                            <img style="width: 10%" src="img/touxiang.jpg" alt="Blog" />-->
+    <div>
+
+
+        <a target="_blank" href="" th:if="${userinfo}!=null"><img border="0" style="width: 10%;margin-top: 0.8vh;border-radius:100%; " th:attr="src=@{img/touxiang.jpg},title=${userinfo.nickname},alt=${userinfo.nickname}" >&nbsp;&nbsp;<span th:text="${userinfo.nickname}"></span></a>
+        <a target="_blank" href="" th:if="${userinfo}==null"><img border="0" style="width: 10%;margin-top: 0.8vh;border-radius:100%; " src="img/touxiang.jpg" alt="bolg" title="Blog">&nbsp;&nbsp;Blog</a>
+    </div>
+    <hr />
+    <div class="blogerinfo-contact">
+        <!--   <a target="_blank" title="QQ交流" href="http://wpa.qq.com/msgrd?v=3&uin=764692390&site=qq&menu=yes"><i class="fa fa-qq fa-2x"></i></a>
+           <a target="_blank" title="给我写信" href="javascript:layer.msg('启动邮我窗口')"><i class="fa fa-envelope fa-2x"></i></a>
+           <a target="_blank" title="新浪微博" href="javascript:layer.msg('转到你的微博主页')"><i class="fa fa-weibo fa-2x"></i></a>
+           <a target="_blank" title="码云" href="https://github.com/764692390"><i class="fa fa-git fa-2x"></i></a>-->
+
+        <a  title="QQ交流" href=""><i class="fa fa-qq fa-2x"></i></a>
+        <a  title="给我写信" href=""><i class="fa fa-envelope fa-2x"></i></a>
+        <a  title="新浪微博" href=""><i class="fa fa-weibo fa-2x"></i></a>
+        <a  title="码云" href=""><i class="fa fa-git fa-2x"></i></a>
+    </div>
+</div>
+
+
+</body>
+</html>
