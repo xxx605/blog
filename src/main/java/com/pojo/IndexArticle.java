@@ -3,6 +3,7 @@ package com.pojo;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class IndexArticle {
@@ -20,10 +21,13 @@ public class IndexArticle {
         private String a_author;
         //文章分类
         private String a_classify;
-        //文章评论数量
-        private Integer a_commit;
         //文章浏览人数
         private Integer a_watches;
         //获取纯文本
         private String a_text;
+        //
+        private String a_nickname;
+
+        //文章评论数量
+        private Integer a_commit;
 }

@@ -2,26 +2,21 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.10.184:3306/blog?serverTimezone=GMT%2B8
     password: root
   thymeleaf:
     cache: false
-
-
-
 
   mvc:
     static-path-pattern=/**
 
   resources:
-    static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web:upload-path}
+    static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 mybatis:
   mapper-locations: classpath:mapper/**.xml
   type-aliases-package: com.pojo
 logging:
   level:
     com: debug
-web:
-  upload-path=E:/
 
 

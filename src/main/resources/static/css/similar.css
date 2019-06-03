@@ -63,6 +63,18 @@ img {
     background: #fff;
     font-size: 13px;
     margin-bottom: 15px;
+
+}
+
+.blog-main>.home-tips2 {
+    margin-top: 79px;
+    border-radius: 4px;
+    padding: 10px 10px;
+    min-height: 5vh;
+    background: #fff;
+    font-size: 13px;
+    margin-bottom: 15px;
+    width: 40%;
 }
 
 .blog-main>.home-tips1 {

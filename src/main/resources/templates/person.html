@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>个人中心</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/current-page.css"/>
+    <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/media.css"  media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../css/similar.css"/>
+</head>
+<style>
+    a:hover{
+        cursor: pointer;
+    }
+</style>
+<body>
+
+
+<div th:replace="common/similar :: nav"></div>
+
+<div class="blog-body">
+    <!-- canvas -->
+    <canvas id="canvas-banner" style="background: rgb(62,49,93);"></canvas>
+    <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
+    <script type="text/javascript">
+        var canvas = document.getElementById('canvas-banner');
+        canvas.width = window.document.body.clientWidth - 10; //减去滚动条的宽度
+        if (screen.width >= 992) {
+            canvas.height = window.innerHeight - 65;
+        } else {
+            canvas.height = window.innerHeight - 65;
+        };
+        var rows = 10;
+        var pagesize = 6;
+    </script>
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+            <a href="/" title="网站首页">网站首页</a>
+            <a href="/person" title="个人中心">个人中心</a>
+        </blockquote>
+
+
+        <div class="blog-main">
+            <div class="home-tips shadow">
+
+                            <p class="" style="margin: 0 auto">Blog</p>
+                            <p class=""  style="margin: 0 auto">一枚90后程序员，web前端 node开发工程师</p>
+                            <p class=""  style="margin: 0 auto"><i class="fa fa-location-arrow"></i>&nbsp;四川 - 成都</p>
+                            <hr />
+                                <legend>简介</legend>
+                                <div class="layui-field-box aboutinfo-abstract abstract-bloger">
+                                    <p style="text-align:center;">Blog，诞生于1996年1月26日</p>
+                                    <h1>个人信息</h1>
+                                    <p>暂无</p>
+                                    <h1>个人介绍</h1>
+                                    <p>一个没有故事的男同学，没什么介绍......</p>
+                                    <h1>关于博客</h1>
+                                    <p>Blog是一个由Node express开发的个人博客网站，诞生于2017年4月1日，起劲为止经历了一次大改，暂且称为Blog1.0.0。</p>
+                                    <h1 style="text-align:center;">The End</h1>
+                                </div>
+
+
+                </div>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer th:replace="common/similar :: foot"></footer>
+
+<div th:replace="common/similar :: sidenav"></div>
+
+<!--分享窗体-->
+<div th:replace="common/similar :: sharingForm"></div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+
+
+
+</body>
+<script type="text/javascript" src="../layui/layui.js" ></script>
+<script type="text/javascript" src="../js/goble.js" ></script>
+<script type="text/javascript" src="../js/page.js" ></script>
+<script type="text/javascript" src="js/index.js" ></script>
+<script type="text/javascript" th:inline="javascript">
+    $(function () {
+        $(".layui-nav-item").eq(5).addClass("layui-this")
+        $(".blog-nav-left .layui-nav-item").eq(5).addClass("layui-this")
+
+    })
+</script>
+</html>

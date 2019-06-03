@@ -2,8 +2,6 @@ package com.controller;
 
 
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.imageio.ImageIO;
@@ -13,33 +11,42 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.utils.FourRandomUtils.FOUR_RANDOM_UTILS;
+
 @RestController
 public class Check {
-    private List<String> words = new ArrayList<String>();
+    private List<String> words ;
     @RequestMapping("check")
 
     public String dodoget(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+            request.setCharacterEncoding("utf-8");
+            response.setContentType("text/html;charset=utf-8");
         // 禁止缓存
         // response.setHeader("Cache-Control", "no-cache");
         // response.setHeader("Pragma", "no-cache");
         // response.setDateHeader("Expires", -1);
 
-        Resource resource = new ClassPathResource("properties/new_words.txt");
+        /*Resource resource = new ClassPathResource("properties/new_words.txt");
         File path = resource.getFile();
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path),"utf-8"));
             String line;
             while ((line = reader.readLine()) != null) {
                 words.add(line);
             }
             reader.close();
-
-
+            */
+      /*  ClassPathResource resource = new ClassPathResource("properties/words.txt");
+        InputStream inputStream = resource.getInputStream();
+        for (String line : IOUtils.readLines(inputStream,"utf8")) {
+            words.add(line);
+        }
+        inputStream.close();*/
+        words=FOUR_RANDOM_UTILS.getFour();
         int width = 120;
         int height = 30;
 

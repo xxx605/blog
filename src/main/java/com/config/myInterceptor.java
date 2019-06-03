@@ -11,7 +11,12 @@ public class myInterceptor implements HandlerInterceptor {
     //放行
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println(request.getRequestURI());
+        if (request.getRequestURI().equals("/detail")){
+            if (request.getMethod().equals("GET")){
+                response.sendRedirect("/");
+                return false;
+            }
+        }
         return true;
     }
 

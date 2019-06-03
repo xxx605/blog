@@ -11,43 +11,40 @@
 </style>
 <body>
 <!--左侧文章-->
-<div class="blog-main-left" th:fragment="leftArticle">
-    <div id="HomeConten" >
+<div id="HomeConten" th:fragment="leftArticle">
 
 
-        <div class="article shadow animated fadeInLeft" th:each="indexArticle : ${indexArticles}" th:attr="id=${indexArticle.aid}">
-            <div class="article-left">
-                <img th:attr="src=${indexArticle.a_path},alt=${indexArticle.a_title}" />
+    <div class="article shadow animated fadeInLeft" th:each="indexArticle : ${indexArticles}" th:attr="id=${indexArticle.aid}">
+        <div class="article-left">
+            <img th:attr="src=${indexArticle.a_path},alt=${indexArticle.a_title}" />
+        </div>
+        <div class="article-right" >
+            <div class="article-title">
+
+
+                <i class="icon1"></i>
+                <i class="icon2"></i>
+                <!--<i class="icon-stick">顶</i>
+              <i class="icon-stick">推荐</i>-->
+
+                <a class="atitle" th:text="${indexArticle.a_title}">
+                </a>
             </div>
-            <div class="article-right" >
-                <div class="article-title">
-
-
-                    <i class="icon1"></i>
-                    <i class="icon2"></i>
-                    <!--<i class="icon-stick">顶</i>
-                  <i class="icon-stick">推荐</i>-->
-
-                    <a class="atitle" th:text="${indexArticle.a_title}">
-                    </a>
-                </div>
-                <div class="article-abstract"  th:text="${#strings.abbreviate(indexArticle.a_text,200)}">
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="article-footer">
-                <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; <span th:text="${indexArticle.a_time}"></span></span>
-                <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp; <span th:text="${indexArticle.a_author}"></span></span>
-                <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="/article" th:text="${indexArticle.a_classify}"></a></span>
-                <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp; <span th:text="${indexArticle.a_watches}"></span></span>
-                <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;<span th:text="${indexArticle.a_commit}"></span></span>
+            <div class="article-abstract"  th:text="${#strings.abbreviate(indexArticle.a_text,200)}">
             </div>
         </div>
-
+        <div class="clear"></div>
+        <div class="article-footer">
+            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; <span th:text="${indexArticle.a_time}"></span></span>
+            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp; <span th:text="${indexArticle.a_nickname}"></span></span>
+            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="/article" th:text="${indexArticle.a_classify}"></a></span>
+            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp; <span th:text="${indexArticle.a_watches}"></span></span>
+            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;<span th:text="${indexArticle.a_commit}"></span></span>
+        </div>
     </div>
 
-    <div id="HomePage"></div>
 </div>
+
 
 
 <!--右侧小栏目-->

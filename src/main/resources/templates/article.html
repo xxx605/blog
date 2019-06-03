@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>文章</title>
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js" ></script>
 		<script type="text/javascript" src="../js/jquery.cookie.js" ></script>
 		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
@@ -47,9 +47,14 @@
 
             <div class="blog-main">
                 <!--左边文章列表-->
-                <div th:replace="common/indexPage :: leftArticle"></div>
+                <div class="blog-main-left" >
+
+                    <div  th:replace="common/indexPage :: leftArticle" ></div>
+
+                    <div id="HomePage"></div>
+                </div>
                 <!--右边小栏目-->
-                <div class="blog-main-right">
+                <div class="blog-main-right" >
 
                     <div></div>
                     <!--占位-->
@@ -86,9 +91,10 @@
 	<script type="text/javascript" src="../layui/layui.js" ></script>
 	<script type="text/javascript" src="../js/goble.js" ></script>
 	<script type="text/javascript" src="../js/page.js" ></script>
-	<script type="text/javascript" src="../js/pages.js" ></script>
+	<script type="text/javascript" src="../js/pages.js"></script>
     <script type="text/javascript" src="js/index.js" ></script>
-    <script type="text/javascript">
+    <script type="text/javascript" th:inline="javascript">
+        var counts = [[${count}]];
         $(function () {
             $(".layui-nav-item").eq(1).addClass("layui-this")
             $(".blog-nav-left .layui-nav-item").eq(1).addClass("layui-this")

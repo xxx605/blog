@@ -7,6 +7,12 @@
         select * from u_article order by aid desc limit 0,8;
     </select>
 
+    <select id="selectIndexArtcileByclassify" resultType="indexArticle">
+        select * from u_article where a_classify=#{classify} ORDER BY aid DESC LIMIT 0,8;
+    </select>
+
+
+
     <insert id="insertArticle" parameterType="indexArticle">
         insert into u_article(<include refid="insertArticlesqlkey"></include>) values(<include refid="insertArticlesqlvalues"></include>)
     </insert>
@@ -17,7 +23,8 @@
         a_time,
         a_author,
         a_classify,
-        a_text
+        a_text,
+        a_nickname
     </sql>
     <sql id="insertArticlesqlvalues">
         #{indexArticle.a_context},
@@ -26,10 +33,30 @@
         #{indexArticle.a_time},
         #{indexArticle.a_author},
         #{indexArticle.a_classify},
-        #{indexArticle.a_text}
+        #{indexArticle.a_text},
+        #{indexArticle.a_nickname}
     </sql>
 
     <select id="selectArticleByAid" resultType="indexArticle">
         select * from u_article where aid=#{aid}
     </select>
+
+    <insert id="insertintoCommit" parameterType="commit">
+        insert into u_commit(<include refid="insertCommitSqlkey"></include>) values(<include refid="insertCommitSqlValues"></include>)
+    </insert>
+    <sql id="insertCommitSqlkey">
+        cpath,
+        aid,
+        c_time,
+        c_content,
+        c_nickname
+    </sql>
+    <sql id="insertCommitSqlValues">
+        #{commit.cpath},
+        #{commit.aid},
+        #{commit.c_time},
+        #{commit.c_content},
+        #{commit.c_nickname}
+    </sql>
+
 </mapper>

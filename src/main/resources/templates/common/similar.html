@@ -30,33 +30,33 @@
 
 
         <li class="layui-nav-item">
-            <a href=""><i class="fa fa-photo fa-fw"></i>&nbsp;相册</a>
+            <a href="album"><i class="fa fa-photo fa-fw"></i>&nbsp;相册</a>
         </li>
 
 
 
         <li class="layui-nav-item">
-            <a href=""><i class="fa fa-info fa-fw"></i>&nbsp;消息<span class="layui-badge">0</span></a>
+            <a><i class="fa fa-info fa-fw"></i>&nbsp;消息<span class="layui-badge">0</span></a>
         </li>
 
 
 
         <li class="layui-nav-item">
 
-            <a href=""><i class="fa fa-user fa-fw"></i>&nbsp;个人中心<span class="layui-badge-dot"></span></a>
+            <a href="person"><i class="fa fa-user fa-fw"></i>&nbsp;个人中心<span class="layui-badge-dot"></span></a>
         </li>
 
         <li class="layui-nav-item" lay-unselect="">
 
             <a href="" th:if="${userinfo}!=null" >
-                <img src="img/touxiang.jpg" class="layui-nav-img"><span id="author" th:text="${userinfo.nickname}"></span></a>
+                <img th:attr="src=${userinfo.u_photo}" class="layui-nav-img"><span id="author" th:text="${userinfo.nickname}"></span></a>
 
             <a href="login" th:if="${userinfo}==null" ><img src="img/touxiang.jpg" class="layui-nav-img">游客</a>
 
 
             <dl class="layui-nav-child" th:if="${userinfo}!=null">
-                <dd><a href="javascript:;">修改信息</a></dd>
-                <dd><a href="javascript:;">退出</a></dd>
+                <dd><a href="modify">修改信息</a></dd>
+                <dd><a href="exit">退出</a></dd>
             </dl>
         </li>
 
@@ -91,29 +91,29 @@
 
 
     <li class="layui-nav-item">
-        <a href=""><i class="fa fa-photo fa-fw"></i>&nbsp;相册</a>
+        <a href="album"><i class="fa fa-photo fa-fw"></i>&nbsp;相册</a>
     </li>
 
 
 
     <li class="layui-nav-item">
-        <a href=""><i class="fa fa-info fa-fw"></i>&nbsp;消息<span class="layui-badge">0</span></a>
+        <a><i class="fa fa-info fa-fw"></i>&nbsp;消息<span class="layui-badge">0</span></a>
     </li>
 
 
 
     <li class="layui-nav-item">
-        <a href=""><i class="fa fa-user fa-fw"></i>&nbsp;个人中心<span class="layui-badge-dot"></span></a>
+        <a href="person"><i class="fa fa-user fa-fw"></i>&nbsp;个人中心<span class="layui-badge-dot"></span></a>
     </li>
 
     <li class="layui-nav-item" lay-unselect="">
         <a href="" th:if="${userinfo}!=null" >
-            <img src="img/touxiang.jpg" class="layui-nav-img"><span th:text="${userinfo.nickname}"></span></a>
+            <img th:attr="src=${userinfo.u_photo}" class="layui-nav-img"><span class="nickname" th:text="${userinfo.nickname}"></span></a>
 
         <a href="login" th:if="${userinfo}==null"><img  src="img/touxiang.jpg" class="layui-nav-img">游客</a>
         <dl class="layui-nav-child" th:if="${userinfo}!=null">
-            <dd><a href="javascript:;">修改信息</a></dd>
-            <dd><a href="javascript:;">退出</a></dd>
+            <dd><a href="modify">修改信息</a></dd>
+            <dd><a href="exit">退出</a></dd>
         </dl>
     </li>
 
@@ -212,11 +212,13 @@
 <
 
 <!-- 底部 -->
-<footer class="blog-footer" th:fragment="foot">
-    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="http://blog.jczxw.cn">小李Blog</a><span>By QQ764692390</span></p>
-    <p><a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备14037484号-1</a></p>
+<footer class="blog-footer"  th:fragment="foot">
+    <p style="color: white"><span >Copyright</span><span>&copy;</span><span>2018</span><a href="/">乔宇</a><span>By QQ605788762</span></p>
+    <p style="color: white"><span>电话:15802893256</span></p>
+    <p style="color: white"><span>微信二维码:</span></p>
     <p class="site-union">
-        <a href="https://www.upyun.com?from=jczxw" target="_blank" rel="nofollow" upyun=""><img style="width:80px;" src=""></a>
+
+        <img style="border-radius:5px; " src="img/weixina.jpg" width="15%"/><br/>
         <span style="position: relative;top: 3px;margin-left: 6px;">提供 CDN 赞助</span>
     </p>
 </footer>

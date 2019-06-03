@@ -2,7 +2,7 @@
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
-    <title></title>
+    <title>微语</title>
     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/jquery.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
@@ -72,7 +72,7 @@
                         </select>
                     </div><br/>
                     <span style="margin-top: 10px;color: #009688">内容:</span><br/>
-                    <textarea id="container" name="content" type="text/plain" style="height: 600px;width: 100%;margin-top: 5px;" >请输入内容</textarea>
+                    <textarea id="container" name="content" type="text/plain" style="margin-top: 5px;" >请输入内容</textarea>
                     <p></p>
                     <br/>
 
@@ -85,7 +85,7 @@
                     <script type="text/javascript" src="editor/ueditor.all.js"></script>
                     <!-- 实例化编辑器 -->
                     <script type="text/javascript">
-                        var ue = UE.getEditor('container');
+                        var ue = UE.getEditor('container',{initialFrameWidth:'100%',initialFrameHeight:600});
 
                     </script>
 
@@ -136,38 +136,8 @@
 <script type="text/javascript" src="../layui/layui.js"></script>
 <script type="text/javascript" src="../js/goble.js"></script>
 <script type="text/javascript" src="../js/page.js"></script>
-<script type="text/javascript" src="../js/pages.js"></script>
-<script>
-    layui.use(['form', 'layedit', 'laydate'], function(){
-        var form = layui.form
-            ,layer = layui.layer
-            ,layedit = layui.layedit
-
-
-        //创建一个编辑器
-        var editIndex = layedit.build('LAY_demo_editor');
-
-
-
-
-
-
-
-        //表单初始赋值
-        form.val('example', {
-            "username": "贤心" // "name": "value"
-            ,"password": "123456"
-            ,"interest": 1
-            ,"like[write]": true //复选框选中状态
-            ,"close": true //开关状态
-            ,"sex": "女"
-            ,"desc": "我爱 layui"
-        })
-
-
-    });
-</script>
-
+<script type="text/javascript" src="../js/index.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
 <script type="text/javascript">
     $(function () {
         $(".layui-nav-item").eq(2).addClass("layui-this")

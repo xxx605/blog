@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>首页</title>
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
 		<script type="text/javascript" src="js/jquery.cookie.js" ></script>
 		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
@@ -61,18 +61,24 @@
 
 			<div class="layui-carousel" id="test10">
  			 <div carousel-item="">
-    			<div><img src="/img/timg.jpg" width="100%"></div>
-    			<div><img src="/img/timg (2).jpg" width="100%"></div>
-    			<div><img src="/img/timg (3).jpg" width="100%"></div>
-  			  	<div><img src="/img/timg (2).jpg" width="100%"></div>
-    			<div><img src="/img/timg (3).jpg" width="100%"></div>
-    			<div><img src="/img/timg.jpg" width="100%"></div>
+    			<div><img src="img/first/first0.jpg" width="100%"></div>
+    			<div><img src="img/first/first1.jpg" width="100%"></div>
+    			<div><img src="img/first/first2.jpg" width="100%"></div>
+  			  	<div><img src="img/first/first3.jpg" width="100%"></div>
+    			<div><img src="img/first/first4.jpg" width="100%"></div>
+    			<div><img src="img/first/first5.png" width="100%"></div>
   			</div>
 			</div>
                     </div>
   
                     <!--左边文章列表-->
-                    <div th:replace="common/indexPage :: leftArticle"></div>
+                    <div class="blog-main-left" >
+
+                        <div  th:replace="common/indexPage :: leftArticle" ></div>
+
+                        <div id="HomePage"></div>
+                    </div>
+
                     <!--右边小栏目-->
                     <div class="blog-main-right">
                         <div th:replace="common/indexPage  :: rightUserInfo"></div>
@@ -110,7 +116,8 @@
 	<script type="text/javascript" src="js/page.js" ></script>
 	<script type="text/javascript" src="js/pages.js" ></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" th:inline="javascript">
+        var counts = [[${count}]];
         $(function () {
             $(".layui-nav-item").eq(0).addClass("layui-this")
             $(".blog-nav-left .layui-nav-item").eq(0).addClass("layui-this")

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>相册</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/current-page.css"/>
+    <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/media.css"  media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../css/similar.css"/>
+    <link rel="stylesheet" href="../css/album/set.css" media="screen" />
+    <link rel="stylesheet" href="../css/album/css3d.css" media="screen" />
+    <script type="text/javascript" src="../js/album/modernizr.js"></script>
+</head>
+<style>
+    a:hover{
+        cursor: pointer;
+    }
+    .img_a{
+        width: 12rem;
+        height: 12rem;
+    }
+
+    .divimg{
+        width: 12rem;
+        height: 14rem;
+        margin-top: 2rem;
+        margin-left: 2rem;
+    }
+    /* a file */
+    .file {
+        position: relative;
+        display: inline-block;
+        border-radius: 2px;
+        overflow: hidden;
+        text-decoration: none;
+        text-indent: 0;
+        line-height: 20px;
+        width: 5%;
+        text-align: center;
+        background: #1E9FFF;
+        padding: 12px 24px;
+        color: #fff;
+    }
+
+
+    .file input {
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;/*关键点*/
+        filter: alpha(opacity=0);/*兼容ie*/
+        font-size: 100px;/* 增大不同浏览器的可点击区域 */
+        cursor: pointer;
+    }
+    .file:hover{
+        color: white;
+    }
+
+
+</style>
+<body>
+
+
+<div th:replace="common/similar :: nav"></div>
+
+<div class="blog-body">
+    <!-- canvas -->
+    <canvas id="canvas-banner" style="background: rgb(62,49,93);"></canvas>
+    <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
+    <script type="text/javascript">
+        var canvas = document.getElementById('canvas-banner');
+        canvas.width = window.document.body.clientWidth - 10; //减去滚动条的宽度
+        if (screen.width >= 992) {
+            canvas.height = window.innerHeight - 65;
+        } else {
+            canvas.height = window.innerHeight - 65;
+        };
+        var rows = 10;
+        var pagesize = 6;
+    </script>
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+            <a href="/" title="网站首页">网站首页</a>
+            <a href="/album" title="相册">相册</a>
+        </blockquote>
+
+
+        <div class="blog-main">
+
+            <div class="home-tips2 shadow">
+                <button class="layui-btn layui-btn-normal normal" style="margin: 1vh 2vh 2vh 1vh;"><i class="fa fa-photo fa-fw"></i>上传图片</button>
+                <button class="layui-btn layui-btn-primary primary" style="margin: 1vh 0vh 2vh 0.8vh;"><i class="fa fa-caret-square-o-down fa-fw"></i>创建相册</button>
+            </div>
+
+            <div class="home-tips shadow">
+                <ul id="grid" class="group" th:fragment="grid">
+                    <li th:each="album : ${albums}">
+                        <div class="details">
+                            <h3 th:text="${album.album_title}"></h3>
+                            创建时间:<span th:text="${album.album_time}"></span>
+                            <a class="more" href="#info1">views <i class="fa fa-fw fa-angle-down "></i></a> </div>
+                        <a class="more" href="#info1"><img src="../img/sss.png" /></a> </li>
+
+                </ul>
+            </div>
+
+            </div>
+            <div class="blog-main-left" >
+
+
+
+              <!--  <div id="HomePage"></div>-->
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer th:replace="common/similar :: foot"></footer>
+
+<div th:replace="common/similar :: sidenav"></div>
+
+<!--分享窗体-->
+<div th:replace="common/similar :: sharingForm"></div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+
+<div id="hiddencontent" hidden="hidden">
+<span style='float: left;line-height: 40px;'>上传到&nbsp;&nbsp;</span>
+    <form action="upload" method="post" enctype="multipart/form-data">
+<div class='layui-input-inline layui-form'>
+    <select name="selectalbum">
+       <option  th:each='album : ${albums}'> <span th:text="${album.album_title}"></span></option>
+      </select></div><br/>
+<div class="fullPath"></div>
+    <div id="morefile" style="position: fixed;bottom: 5%;width: 100%;">
+    <a  class='file'><i class='fa fa-photo fa-fw'></i>上传图片<input  type='submit' onclick="return btn();"/> </a>
+    <a  class='file'><i class='fa fa-photo fa-fw'></i>选择图片<input  type='file' name='filename' multiple='multiple'/> </a>
+</div>
+</form>
+</div>
+</body>
+<script type="text/javascript" src="../layui/layui.js" ></script>
+<script type="text/javascript" src="../js/goble.js" ></script>
+<script type="text/javascript" src="../js/page.js" ></script>
+<script type="text/javascript" src="js/index.js" ></script>
+<script type="text/javascript" src="js/album/createalbum.js" ></script>
+<script type="text/javascript" th:inline="javascript">
+    $(function () {
+        $(".layui-nav-item").eq(3).addClass("layui-this")
+        $(".blog-nav-left .layui-nav-item").eq(3).addClass("layui-this")
+    })
+
+    var endpath=[
+        ".bmp",".jpg", ".png", ".tif",".gif",".pcx",".tga",".exif",".fpx",".svg",".psd",".cdr",".pcd",".dxf",".ufo",".eps",".ai",".raw",".WMF",".webp"
+    ]
+    $(document).on("change","input[type='file']",function(){
+        for (var i=0;i<this.files.length;i++){
+            var objURL = getObjectURL(this.files[i]);//这里的objURL就是input file的真实路径
+            var filePath=this.files[i].name;
+            var file=filePath.substring(filePath.lastIndexOf("."))
+            if (!($.inArray(file,endpath)<0)){
+                $(".fullPath").append("<div class='divimg' style='float: left'><img class='img_a' src="+objURL+"><br/><span style='margin: 0 auto'>文件名:"+filePath+"</span></div>");
+            }else {
+                layui.use("layer",function () {
+                    var layer=layui.layer;
+                    layer.msg("你传的不是图片格式")
+                })
+            }
+        }
+
+
+
+
+    });
+
+    function btn() {
+     if ($(".fullPath").children().length==0 ){
+         layui.use("layer",function () {
+             var layer=layui.layer;
+             layer.msg("你还没有选择图片")
+         })
+         return false;
+     };
+     return true;
+    }
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjcectURL != undefined) {
+            url = window.createOjcectURL(file);
+        } else if (window.URL != undefined) {
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) {
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
+</html>

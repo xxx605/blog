@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+<insert id="createAlbum">
+    insert into u_album(album_title,album_content,album_time,album_author) values(#{albums.album_title},#{albums.album_content},#{albums.album_time},#{albums.album_author})
+</insert>
+</mapper>
